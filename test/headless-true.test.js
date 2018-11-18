@@ -33,8 +33,7 @@ describe('Headless true', () => {
   }, timeout);
 
   it('user clicks on link-two', async () => {
-    const link = await page.$('[link-two]');
-    // console.log(link);
+    const link = await queryShadowSelector(['core-lite', 'component-one', '[link-two]'], page);
     clickLink(link, page);
   });
 

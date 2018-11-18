@@ -61,6 +61,8 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "@littleq/core-lite": "0.0.5"
+    "@littleq/core-lite": "0.0.5",
+    "@littleq/element-lite": "^0.3.8",
+    "firebase": "^5.5.8"
   }
 }

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "module." + {"0":"b0922655199b3ef80174","1":"6770c65b3c1d1efe8091"}[chunkId] + ".fragment.js"
+/******/ 		return __webpack_require__.p + "module." + {"0":"d3abb393602a816aff7c","1":"a7f39b75731285681f88","2":"b644f5f02faa09af7b33"}[chunkId] + ".fragment.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -326,6 +326,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sha
 
 /***/ }),
 
+/***/ "./src/fragments.js":
+/*!**************************!*\
+  !*** ./src/fragments.js ***!
+  \**************************/
+/*! exports provided: fragments */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"fragments\", function() { return fragments; });\nconst fragments = {\n  '/': () => __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./component-one.js */ \"./src/component-one.js\")),\n  '/link-two': () => __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./component-two.js */ \"./src/component-two.js\"))\n};\n\n\n//# sourceURL=webpack:///./src/fragments.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -334,7 +346,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sha
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component-container */ \"./src/component-container.js\");\n/* harmony import */ var _littleq_core_lite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @littleq/core-lite */ \"./node_modules/@littleq/core-lite/core-lite.js\");\n\n\nconst core = document.querySelector('core-lite');\n\nconst changeContainer = (path = '/') => {\n  if (path === '/') {\n    __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./component-one.js */ \"./src/component-one.js\"));\n  } else if (path === '/link-two') {\n    __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./component-two.js */ \"./src/component-two.js\"));\n  }\n};\n\ncore.addEventListener('path-change', ({\n  detail: path\n}) => changeContainer(path));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _component_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component-container */ \"./src/component-container.js\");\n/* harmony import */ var _littleq_core_lite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @littleq/core-lite */ \"./node_modules/@littleq/core-lite/core-lite.js\");\n/* harmony import */ var _fragments_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fragments.js */ \"./src/fragments.js\");\n/* harmony import */ var _state_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./state.js */ \"./src/state.js\");\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\n\n\nconst core = document.querySelector('core-lite');\ncore.addEventListener('current-route-change', routeChanged);\n\nfunction routeChanged({\n  detail: route\n}) {\n  lazyLoad(_fragments_js__WEBPACK_IMPORTED_MODULE_2__[\"fragments\"][route]);\n  Object(_state_js__WEBPACK_IMPORTED_MODULE_3__[\"updateState\"])('route', route);\n}\n\nfunction lazyLoad(_x) {\n  return _lazyLoad.apply(this, arguments);\n}\n\nfunction _lazyLoad() {\n  _lazyLoad = _asyncToGenerator(function* (fragment) {\n    try {\n      if (fragment && typeof fragment === 'function') {\n        yield fragment();\n      } else {\n        yield Promise.reject(new Error('No fragment found'));\n      }\n    } catch (error) {\n      console.error(error);\n    }\n  });\n  return _lazyLoad.apply(this, arguments);\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -347,6 +359,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"shadowMixin\", function() { return shadowMixin; });\nconst shadowMixin = base => {\n  return class extends base {\n    constructor() {\n      super();\n      this.attachShadow({\n        mode: 'open'\n      });\n      this.render();\n    }\n\n  };\n};\n\n//# sourceURL=webpack:///./src/shadow-mixin.js?");
+
+/***/ }),
+
+/***/ "./src/state.js":
+/*!**********************!*\
+  !*** ./src/state.js ***!
+  \**********************/
+/*! exports provided: subscribe, unsubscribe, dispatch, dispatchLast, updateState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"subscribe\", function() { return subscribe; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"unsubscribe\", function() { return unsubscribe; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"dispatch\", function() { return dispatch; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"dispatchLast\", function() { return dispatchLast; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"updateState\", function() { return updateState; });\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nconst functions = {};\nconst lastValues = {};\nlet currentState = {};\nconst stateTimeline = [];\n\nconst subscribe = (path, fn) => {\n  if (!functions[path]) functions[path] = [];\n  if (functions[path].indexOf(fn) < 0) functions[path].push(fn);\n  if (lastValues[path] !== undefined) fn(lastValues[path]);\n};\n\nconst unsubscribe = (path, fn) => {\n  const index = functions[path].indexOf(fn);\n  if (index >= 0) functions[path].splice(index, 1);\n};\n\nconst reducer = (path, state = {}, value) => {\n  const obj = {};\n  obj[path] = value;\n  return _objectSpread({}, state, obj);\n};\n\nfunction dispatch(_x, _x2) {\n  return _dispatch.apply(this, arguments);\n}\n\nfunction _dispatch() {\n  _dispatch = _asyncToGenerator(function* (path, value) {\n    lastValues[path] = value;\n    yield dispatchLast(path);\n  });\n  return _dispatch.apply(this, arguments);\n}\n\nfunction dispatchLast(_x3) {\n  return _dispatchLast.apply(this, arguments);\n}\n\nfunction _dispatchLast() {\n  _dispatchLast = _asyncToGenerator(function* (path) {\n    yield Promise.resolve();\n    const fns = functions[path];\n    const value = lastValues[path];\n\n    if (fns) {\n      for (let i = 0; i < fns.length; i++) {\n        const fn = fns[i];\n        fn(value);\n      }\n    }\n  });\n  return _dispatchLast.apply(this, arguments);\n}\n\nfunction updateState(path, value) {\n  currentState = reducer(path, currentState, value);\n\n  if (stateTimeline.length >= 1000) {\n    stateTimeline.pop();\n  }\n\n  stateTimeline.unshift(currentState);\n  dispatch(path, value);\n}\n\n\n\n//# sourceURL=webpack:///./src/state.js?");
 
 /***/ })
 

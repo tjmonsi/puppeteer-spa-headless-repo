@@ -1,13 +1,23 @@
 import './component-container';
 import '@littleq/core-lite';
+import { fragments } from './fragments.js';
+import { updateState } from './state.js';
 const core = document.querySelector('core-lite');
+core.addEventListener('current-route-change', routeChanged);
 
-const changeContainer = (path = '/') => {
-  if (path === '/') {
-    import('./component-one.js');
-  } else if (path === '/link-two') {
-    import('./component-two.js');
+function routeChanged ({ detail: route }) {
+  lazyLoad(fragments[route]);
+  updateState('route', route);
+}
+
+async function lazyLoad (fragment) {
+  try {
+    if (fragment && typeof fragment === 'function') {
+      await fragment();
+    } else {
+      await Promise.reject(new Error('No fragment found'));
+    }
+  } catch (error) {
+    console.error(error);
   }
-};
-
-core.addEventListener('path-change', ({ detail: path }) => changeContainer(path));
+}
